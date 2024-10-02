@@ -1,0 +1,132 @@
+import java.util.Scanner;
+
+public class BookMarket {
+	static final int num_book = 3;
+	static final int num_item = 7;
+	public static void main(String[] args) {
+		   String[][] mbook = new String[num_book][num_item];
+		   String userName;
+	       String userPhone;
+	       int menuNum;
+	      
+	       Scanner s = new Scanner(System.in);
+	      
+	       System.out.print("당신의 이름을 입력하세요:");
+	       userName = s.next();
+	       System.out.print("연락처를 입력하세요:");
+	       userPhone = s.next();
+	      
+	       do {
+	    	   menuIntro();
+	    	    System.out.print("메뉴 번호를 선택해 주세요");
+	    	    menuNum = s.nextInt();
+	          
+	           if(menuNum < 1 || menuNum > 8) {
+	               System.out.println(">> 다시 선택하세요.");
+	               continue;
+	           }
+	           //메뉴 번호 선택에 따른 처리
+	           switch(menuNum) {
+	           case 1: //1. 고객정보 확인하기 메뉴를 선택했을 경우
+	        	   menuGuestInfo(userName, userPhone);
+	        	   break;
+	           case 2: //2. 장바구니 상품 목록 보기 메뉴를 선택했을 경우
+	        	   menuCartItemList();
+	               break;
+	           case 3:
+	        	   menuCartClear();
+	               break;
+	           case 4:
+	        	   menuCartAddItem(mbook);
+	               break;
+	           case 5:
+	        	   menuCartRemoveItemCount();
+	               break;
+	           case 6:
+	        	   menuCartRemoveItem();
+	               break;
+	           case 7:
+	        	   menuCartBill();
+	               break;
+	           case 8:
+	        	   menuExit();
+	               break;
+	           }           
+	       }while(menuNum != 8);
+	   }
+	public static void menuIntro() {
+	    System.out.println("***********************************************");
+	    System.out.println(" Welcome to Shopping Mall");
+	    System.out.println(" Welcome to BookMarket");
+	    System.out.println("***********************************************");
+	    System.out.println("1. 고객정보 확인하기 \t 4. 바구니에 항목 추가하기");
+	    System.out.println("2. 장바구니 상품 목록 보기 \t 5.장바구니의 항목 수량 줄이기");
+	    System.out.println("3. 장바구니 비우기 \t\t 6. 장바구니의 항목 삭제하기");
+	    System.out.println("7. 영수증 표시하기 \t\t 8. 종료");
+	    System.out.println("***********************************************");
+	}
+	public static void menuGuestInfo(String userName, String userPhone) {  //1번
+		 System.out.println(">> 현재 고객 정보:");
+     System.out.println("이름 "+userName+" 연락처 "+userPhone);
+     System.out.println();
+	}
+	public static void menuCartItemList() { //2번
+    System.out.println(">> 장바구니 목록입니다.");
+    System.out.println();
+	}
+	public static void menuCartClear() {  //3번
+    System.out.println(">> 장바구니가 비었습니다.");
+    System.out.println();
+	}
+	public static void menuCartAddItem(String[][] book) {  //4번
+//    System.out.println(">> 항목이 추가되었습니다..");
+//    System.out.println();
+	for(int i = 0; i<num_book; i++) {
+		for(int j = 0; j<num_item; j++) {
+			System.out.println();
+		}
+	}
+	}
+	public static void menuCartRemoveItemCount() {  //5번
+    System.out.println(">> 항목 수량이 줄었습니다.");
+    System.out.println();
+	}
+	public static void menuCartRemoveItem() { //6번
+    System.out.println(">> 항목이 삭제되었습니다.");
+    System.out.println();
+	}
+	public static void menuCartBill() { //7번
+    System.out.println(">> 영수증이 표시됩니다.");
+    System.out.println();
+	}
+	public static void menuExit() { //8번
+    System.out.println(">> Book Market을 종료합니다.");
+    System.out.println();
+	}
+	
+	public static void BookList(String[][] book) {
+		book[0][0] ="ISBM1234"; 
+		book[0][1] ="limited와 쉽게 배우는 JAVA 프로그래밍";
+		book[0][2] ="30000";
+		book[0][5] ="단계별로 쇼핑물을 구현하며 배우는 JAVA";
+		book[0][4] ="프로그래밍";
+		book[0][3] ="limited";
+		book[0][6] ="2024.01.01";
+		
+		book[1][0] ="ISBM1235"; 
+		book[1][1] ="limited와 함깨 하는 카트라이더 선수 육성 과정";
+		book[1][2] ="20000";
+		book[1][5] ="초보부터 아마추어 최강까지 실력을 키워나간다.";
+		book[1][4] ="프로게이머";
+		book[1][3] ="limited";
+		book[1][6] ="2024.02.01";
+		
+		book[2][0] ="ISBM1237"; 
+		book[2][1] ="대충 문학책";
+		book[2][2] ="10000";
+		book[2][5] ="대충 문학책 설명";
+		book[2][4] ="문학";
+		book[2][3] ="FlashLux";
+		book[2][6] ="2024.03.01";
+	}
+}
